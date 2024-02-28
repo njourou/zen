@@ -1,0 +1,19 @@
+#container {
+    position: relative;
+  }
+  
+  #hover-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0; /* Hide the hover image by default */
+  }
+  
+  #content {
+    z-index: 1; /* Ensure content is on top of the hover image */
+    /* Other styles for your content */
+  }
+  
