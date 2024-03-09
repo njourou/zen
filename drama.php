@@ -3,9 +3,9 @@ include "./includes/header.php";
 
 // Function to fetch list of high rated TV series
 function getHighRatedTVSeries($api_key) {
-     // Assuming this is the genre ID for adult animation
+    $adult_animation_genre_id = 16; // Assuming this is the genre ID for adult animation
 
-    $url = "https://api.themoviedb.org/3/discover/tv?api_key={$api_key}&vote_average.gte=6";
+    $url = "https://api.themoviedb.org/3/discover/tv?api_key={$api_key}&vote_average.gte=8&with_genres=18";
     $json = file_get_contents($url);
     $data = json_decode($json, true);
 

@@ -86,6 +86,9 @@ h6 {
 }
 
 #header.header-scrolled {
+  background: linear-gradient(135deg, rgba(40, 4, 245, 0.1), rgba(255, 255, 255, 0));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   padding: 12px 0;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 }
@@ -115,7 +118,7 @@ h6 {
 --------------------------------------------------------------*/
 .get-started-btn {
   margin-left: 30px;
-  background: #ff0004;
+  background: linear-gradient(135deg, #ff0000, #ff0000);
   color: #fff;
   border-radius: 4px;
   padding: 8px 25px;
@@ -483,7 +486,7 @@ section {
 
 .section-bg:before {
   content: "";
-  background: #141414;
+  background: linear-gradient(135deg, #141449, #000000);
   position: absolute;
   bottom: 60px;
   top: 60px;
@@ -1250,7 +1253,12 @@ section {
   margin-bottom: 20px;
   overflow: hidden;
   border-radius: 5px;
-  background: #fff;
+  background: linear-gradient(135deg, rgba(7, 1, 44, 0.1), rgba(255, 255, 255, 0));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 10px;
+  border:1px solid rgba(255, 255, 255, 0.055);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.438);
   position: relative;
 }
 
@@ -1303,18 +1311,18 @@ section {
   font-weight: 700;
   margin-bottom: 5px;
   font-size: 18px;
-  color: #111111;
+  color: #ffffff;
 }
 
 .team .member .member-info span {
   display: block;
   font-size: 13px;
   font-weight: 400;
-  color: #aaaaaa;
+  color: #ffffff;
 }
 
 .team .member .member-info p {
-  font-style: italic;
+  /* font-style: italic; */
   font-size: 14px;
   line-height: 26px;
   color: #777777;
