@@ -29,16 +29,16 @@ function displayTVSeries($tv_series) {
             echo "<div class='col-lg-3 col-md-6 d-flex align-items-stretch'>";
             echo "<div class='member' data-aos='fade-up' data-aos-delay='100'>";
             echo "<div class='member-img'>";
+            echo "<a href='video.php?series_id={$series['id']}'>";
+
             echo "<img src='{$poster_url}' class='img-fluid' alt='{$title}'>";
+            echo "</a>";
             echo "<div class='social'>";
-            echo "<a href='https://vidsrc.to/embed/tv/{$series['id']}'><i class='bi bi-play'></i></a>";
-            echo "</div>";
-            echo "</div>";
-            echo "<div class='member-info'>";
-            
-            echo "<p>{$title}-{$year_released}</p>"; // Displaying year released
+            echo "<a href='video.php?series_id={$series['id']}'>";
 
             echo "</div>";
+            echo "</div>";
+       
             echo "</div>";
             echo "</div>";
         }

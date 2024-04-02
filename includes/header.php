@@ -38,7 +38,10 @@
   <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center"> 
       <h1 class="logo me-auto"><a href="index.php">ZENFLIX<span>.</span></a></h1>
-   
+      <form action="search.php" method="GET">
+      <input type="text" name="query" placeholder="Search here">
+      <button type="submit" class="get-started-btn scrollto">Search</button>
+    </form>
 
 
       <nav id="navbar" class="navbar order-last order-lg-0">
@@ -52,8 +55,8 @@
               <li><a href="./comedy.php">Comedy</a></li>
               <li><a href="./drama.php">Drama</a></li>
               <li><a href="./documentary.php">Documentary</a></li>
-
-              <li><a href="./horror.php">Horror</a></li>
+              <li><a href="./marvel.php">Marvel Series</a></li>
+              <li><a href="./horror.php">Mystery</a></li>
             </ul>
           </li>
         </ul>

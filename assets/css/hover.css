@@ -1,19 +1,33 @@
-#container {
-    position: relative;
-  }
-  
-  #hover-image {
-    display: block;
-    width: 100%;
-    height: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0; /* Hide the hover image by default */
-  }
-  
-  #content {
-    z-index: 1; /* Ensure content is on top of the hover image */
-    /* Other styles for your content */
-  }
-  
+/* style-night.css */
+
+/* Body styles */
+body {
+  background-color: #121212; /* Dark background color */
+  color: #ffffff; /* Light text color */
+}
+
+/* Header styles */
+header {
+  background-color: #333333; /* Dark header background color */
+  color: #ffffff; /* Light text color */
+}
+
+/* Breadcrumbs styles */
+.breadcrumbs {
+  background-color: #212121; /* Dark breadcrumbs background color */
+  color: #ffffff; /* Light text color */
+}
+
+/* Footer styles */
+footer {
+  background-color: #333333; /* Dark footer background color */
+  color: #ffffff; /* Light text color */
+}
+
+/* Button styles */
+button {
+  background-color: #1e88e5; /* Blue button background color */
+  color: #ffffff; /* Light text color */
+}
+
+/* Add more night mode styles as needed */

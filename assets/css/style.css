@@ -1,14 +1,4 @@
-/**
-* Template Name: Presento
-* Updated: Jan 29 2024 with Bootstrap v5.3.2
-* Template URL: https://bootstrapmade.com/presento-bootstrap-corporate-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
 
-/*--------------------------------------------------------------
-# General
---------------------------------------------------------------*/
 body {
   font-family: 'Montserrat', sans-serif;
   color: #444444;
@@ -86,11 +76,9 @@ h6 {
 }
 
 #header.header-scrolled {
-  background: linear-gradient(135deg, rgba(40, 4, 245, 0.1), rgba(255, 255, 255, 0));
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: #fff;
   padding: 12px 0;
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1); */
 }
 
 #header .logo {
@@ -362,6 +350,15 @@ h6 {
 .navbar-mobile .dropdown>.dropdown-active {
   display: block;
 }
+.now-playing::after {
+  content: " (Now Playing)";
+  color: green;
+}
+#video-player {
+  width: 100%; /* or any other percentage value */
+  height: 100vh; /* or any other height value */
+}
+
 
 /*--------------------------------------------------------------
 # Hero Section
@@ -486,7 +483,7 @@ section {
 
 .section-bg:before {
   content: "";
-  background: linear-gradient(135deg, #141449, #000000);
+  background: linear-gradient(135deg, #180761, #350808);
   position: absolute;
   bottom: 60px;
   top: 60px;
@@ -1253,10 +1250,9 @@ section {
   margin-bottom: 20px;
   overflow: hidden;
   border-radius: 5px;
-  background: linear-gradient(135deg, rgba(7, 1, 44, 0.1), rgba(255, 255, 255, 0));
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 10px;
+  background: linear-gradient(135deg, rgb(13, 2, 83), rgb(121, 0, 0));
+ 
+  border-radius: 5px;
   border:1px solid rgba(255, 255, 255, 0.055);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.438);
   position: relative;
