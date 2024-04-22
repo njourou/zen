@@ -32,7 +32,7 @@ function getEpisodes($api_key, $series_id, $season_number) {
 }
 
 
-$api_key = 'Key Here'; // Replace with your actual API key
+$api_key = '21e8c70b8d8ab44e9ce6e7d707eb4a9f'; // Replace with your actual API key
 $selected_series = isset($_GET['series_id']) ? $_GET['series_id'] : '';
 $selected_season = isset($_GET['season']) ? $_GET['season'] : ($selected_series ? 1 : '');
 
@@ -46,8 +46,6 @@ if (!empty($selected_series) && $selected_season !== '') {
 }
 ?>
 
-
-
 <main id="main">
 
 <!-- ======= Breadcrumbs ======= -->
@@ -55,18 +53,22 @@ if (!empty($selected_series) && $selected_season !== '') {
     <div class="container">
         <ol>
             <li><a href="index.php">Home</a></li>
-            <li>TV Series</li>
+            <li><a href="tv_series.php">TV Series</a></li>
+            <?php
+            if (!empty($series_details)) {
+                echo "<li>{$series_details['name']}</li>";
+            }
+            if (!empty($episodes)) {
+                $current_episode_number = isset($_GET['episode']) ? $_GET['episode'] : '';
+                echo "<li>Season {$selected_season}, Episode {$current_episode_number}</li>";
+            }
+            ?>
         </ol>
         <?php
-        if (!empty($series_details)) {
-            // echo "<p>{$series_details['overview']}</p>";
-            echo "<h2>{$series_details['name']}</h2>";
-       
+        if (!empty($episodes) && !empty($current_episode_number)) {
+            echo "<p>You are currently watching Season {$selected_season}, Episode {$current_episode_number}. Enjoy!</p>";
         }
         ?>
-        <!-- Add this button wherever you want it to appear on your page -->
-            <button id="now-playing-btn" style="display: none;">Now Playing: <span id="now-playing-episode"></span></button> 
-
     </div>
 </section><!-- End Breadcrumbs -->
 
@@ -79,39 +81,39 @@ if (!empty($selected_series) && $selected_season !== '') {
             <div class="col-lg-8">
                 <div class="portfolio-details-slider swiper">
                     <div class="swiper-wrapper align-items-center">
-
-                        <!-- Video Here -->
-                        <div class="video-container">
-                            <?php
-                            if (!empty($selected_series)) {
-                                $video_url = "https://vidsrc.to/embed/tv/{$selected_series}/{$selected_season}";
-                                echo "<iframe src='{$video_url}' frameborder='0' scrolling='no' width='700' height='400' id='video-player'></iframe>";
-                                echo "<p>{$series_details['overview']}</p>";
-                                echo "<p>{$series_details['credits']['cast']}</p>";
-                            } else {
-                                echo "<p>No video ID provided.</p>";
-                            }
-                            ?>
-                        </div>
-
+                        <!-- No video here -->
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
+                <?php
+                if (!empty($episodes)) {
+                    foreach ($episodes['episodes'] as $episode) {
+                        $episode_number = $episode['episode_number'];
+                        $episode_name = $episode['name'];
+                        $episode_description = $episode['overview'];
+                        $episode_poster = "https://image.tmdb.org/t/p/w500" . $episode['still_path']; // Adjust the size as needed
+                        echo "<h3>{$episode_name}</h3>";
+                        echo "<img src='{$episode_poster}' alt='{$episode_name}' style='max-width: 100%; height: auto;'>";
+                        echo "<p>{$episode_description}</p>";
+                        echo "<a href='https://vidsrc.to/embed/tv/{$selected_series}/{$selected_season}/{$episode_number}' target='_blank' class='btn btn-primary'>Watch Now</a>";
+                    }
+                } else {
+                    echo "<p>No episodes available.</p>";
+                }
+                ?>
             </div>
 
             <div class="col-lg-4">
                 <div class="portfolio-info">
                     <h3>List of Episodes</h3>
-                    <!-- <button id="now-playing-btn" style="display: none;">Now Playing: <span id="now-playing-episode"></span></button> -->
                     <form id="season-form" method="GET">
                         <label for="season">Select Season:</label>
-                        <select name="season" id="season">
+                        <select name="season" id="season" onchange="this.form.submit()">
                             <?php
                             if (!empty($series_details) && isset($series_details['number_of_seasons'])) {
                                 $num_seasons = $series_details['number_of_seasons'];
                                 for ($i = 1; $i <= $num_seasons; $i++) {
                                     $selected = ($i == $selected_season) ? 'selected' : '';
-                               
                                     echo "<option value='{$i}' {$selected}>Season {$i}</option>";
                                 }
                             } else {
@@ -121,19 +123,6 @@ if (!empty($selected_series) && $selected_season !== '') {
                         </select>
                         <input type="hidden" name="series_id" value="<?php echo $selected_series; ?>">
                     </form>
-                    <ul id="episode-list">
-                        <?php
-                        if (!empty($episodes)) {
-                            foreach ($episodes['episodes'] as $episode) {
-                                $episode_number = $episode['episode_number'];
-                                $episode_name = $episode['name'];
-                                echo "<li><a href='#' data-episode-number='{$episode_number}' data-season='{$selected_season}'>{$episode_name}</a></li>";
-                            }
-                        } else {
-                            echo "<p>No episodes available.</p>";
-                        }
-                        ?>
-                    </ul>
                 </div>
             </div>
 

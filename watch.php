@@ -26,6 +26,7 @@ function getMovieDetails($api_key, $movie_id) {
 }
 
 $api_key = '21e8c70b8d8ab44e9ce6e7d707eb4a9f'; // Replace with your actual API key
+
 $selected_movie = isset($_GET['movie_id']) ? $_GET['movie_id'] : '';
 
 $movie_list = getHighRatedMovies($api_key);
@@ -63,21 +64,17 @@ if (!empty($selected_movie)) {
             <div class="col-lg-8">
                 <div class="portfolio-details-slider swiper">
                     <div class="swiper-wrapper align-items-center">
-
-                        <!-- Video Here -->
-                        <div class="video-container">
-                            <?php
-                            if (!empty($selected_movie)) {
-                                $video_url = "https://vidsrc.to/embed/movie/{$selected_movie}";
-                                echo "<iframe src='{$video_url}' frameborder='0' scrolling='no' width='700' height='400' id='video-player'></iframe>";
-                            } else {
-                                echo "<p>No video ID provided.</p>";
-                            }
-                            ?>
-                        </div>
-
+                        <!-- No video here -->
                     </div>
                     <div class="swiper-pagination"></div>
+                </div>
+                <div class="video-details">
+                    <?php
+                    if (!empty($movie_details)) {
+                        echo "<p>{$movie_details['overview']}</p>";
+                        echo "<a href='https://vidsrc.to/embed/movie/{$selected_movie}' target='_blank' class='btn btn-primary'>Watch Now</a>";
+                    }
+                    ?>
                 </div>
             </div>
 
@@ -86,12 +83,10 @@ if (!empty($selected_movie)) {
                     <h3>Movie Details</h3>
                     <?php
                     if (!empty($movie_details)) {
-                        $rating = $item['vote_average'];
-                        //Poster 
-                        echo "<p>{$movie_details['overview']}</p>";
+                        $poster_url = "https://image.tmdb.org/t/p/w500{$movie_details['poster_path']}";
+                        echo "<img src='{$poster_url}' class='img-fluid' alt='{$movie_details['title']}'>";
                         echo "<p>Release Date: {$movie_details['release_date']}</p>";
                         echo "<p>Rating: {$movie_details['vote_average']}</p>";
-                        echo "<img src='{$poster_url}' class='img-fluid' alt='{$title}'>";
                     }
                     ?>
                 </div>

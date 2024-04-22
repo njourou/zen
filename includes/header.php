@@ -31,7 +31,11 @@
 
 
 </head>
-
+<script>
+    document.addEventListener('contextmenu', function (event) {
+      event.preventDefault();
+    });
+  </script>
 <body>
 
   <!-- ======= Header ======= -->
@@ -78,7 +82,7 @@
 ?>
 
 
-<a href="./kids.php" class="get-started-btn scrollto">KIDS</a>
+
 
     </div>
   </header><!-- End Header -->

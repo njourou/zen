@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault();
         var episodeNumber = this.getAttribute('data-episode-number');
         var season = this.getAttribute('data-season');
-        var episodeUrl = "https://vidsrc.to/embed/tv/<?php echo $selected_series; ?>/" + season + "/" + episodeNumber;
+        var url = "proxy.php?seriesId=" + seriesId + "&seasonNumber=" + seasonNumber;
         document.getElementById('video-player').src = episodeUrl;
       });
     });
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function fetchEpisodes(seriesId, seasonNumber) {
-      var url = "https://api.themoviedb.org/3/tv/" + seriesId + "/season/" + seasonNumber + "?api_key=21e8c70b8d8ab44e9ce6e7d707eb4a9f";
+      var url = "proxy.php?seriesId=" + seriesId + "&seasonNumber=" + seasonNumber;
       
       fetch(url)
         .then(function(response) {
